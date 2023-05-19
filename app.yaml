@@ -1,0 +1,10 @@
+runtime: java11
+env: standard
+instance_class: B1
+handlers:
+  - url: .*
+    script: auto
+basic_scaling:
+  max_instances: 3
+  idle_timeout: 10m
+service_account: losung360-connector-gae@losung360-crm.iam.gserviceaccount.com

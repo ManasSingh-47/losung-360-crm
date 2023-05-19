@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "losung360-crm",
+  "private_key_id": "9970dc4016aad266fb86ad5137d30ed8b5d12a06",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC4SCnJsOZAG2Dz\noQD4nxLVfpiYJhvIaqoIPtWu16Ox3XR5tBUssee7FSzKCMPIrrwyW1qrp4L295Ix\nAdxGrE9TWuHJaDLkIhZBh8dOMRgQFP6c6mgJml8R5x/C3FMFq/CTlh6Ja+BpCfD/\nHxVcSrmimGPqMqAL1MLRDsFiD7xFgSlYS7ZhltPKGGLPJUtF+REtyL+6CoohxRa8\nTmxeJ0RI7B6wuFxWaRs6rdkYbVaPszHySCv3iq8CvfXnLKItahLyJl4jJEg2s7w0\n5TThh+tfE4bQmt+wTlfwlZwzCigXbA1xAZsi+E7A4EcEePwdDov4obHZN1kKieoN\nMWuZBMg1AgMBAAECggEAMhfzvA7pWC3ZGgD/OZZMUVq7ckiRrtZH6DvkbEXUCqqP\nWfH4+5BU1Mc5yKW/StMs92db62N6t1WvGMFPtqpqWddPnydDBj653BBjvj6cMury\nF4ekxk9/Xmd8e8TWkKkfmY7qOCLp+sOoDkHN1au+cJOKPYSLewvX9WpUaSqr3Bx8\nqi9vGHR9cGJeiyrlzaIzra7Vb3Ms31GGeZGMWMkJT/ozfbp9X3kchrR24y7DLjLw\nPlI+foA9+Bk5g4+jlLED738uPfNMUEu2vwb1CM5eJ+1bHVcXBcJvC6GA2Eyln05S\nkkEYZ4VBnOoNdwuoCYE0xnNFAc32Y1KC0rnBfcm11QKBgQDtZfRCCQjefg5Nxa5K\nrdZVQNHjl3jaChVR32M1kjRE55M0scYA6KF2NGiWyhmwvcwVoTMPyKXN7kXR8eVd\nh8T+1z2vrv8p62lvuo2DSWD/7EswJ4zslRebB7TJrS9cByqZb4gyI6wYkDzNCVV+\nMbds4EYsLFxPp9mCVMIXVdWMYwKBgQDGuLsxJ19M9I7gJeHX0bdBzCLUg9DeJBiz\neVluuDa8ZuMAjsLVmjRlaVnqGBmH1JpEsUSE4tLS6AU3KM6EByo07tld7D2v5VmE\nEH9/XEuqBJYzh8GnkNqOyAVM/HFHrJY1ap+q8kEz0Qam9Rn9/vsBnO8F0zWX1JJ0\nx4AnOCVAhwKBgFRBhzuYsUkmPDVmH8HpiNShON0p+X6JbZ+tRSzSQzLhbeGZ5siT\nyBqH50b9W7ja5AAZQmIruI0qMCWfUOStN0Grav1bgryCDN3WvDsIZCDw4I6qut2M\n3N/tEEEz8kcbVAc5CoGhH4doSewLkAhF5PADeWRcKjcrP4t+QZS+phg5AoGBALKv\nTtqu7Xlz+bjBN2bpUt/eH395m2jziiZvOiRdjhIwbXOF6tlIlE6PwWLGEsbZO3IC\n93qJvkoYiQAFOFTtYF1CW7+hegJctvYSI6KwqfSRtUFWk6IJlQyH/IQyBeYN4O7d\nFf8PX+Oo01Ny1tFV4fucUiypsun4IUzSSoB5cr2nAoGAMOuF4Arp0263DaHtl3Cz\noPmLM7KfnBl2vJv+E8WZYcDQfOe+bWx6u5fe78Ii5RtjtOO0x2l+/NfOT12+ISMf\nc+XdBMGMEipGODQb2oUQgm9Yy8PWKXjO+6fr5TZ0FGbH+Y/TxOXh8j9TGirnrudI\nhuqn7iiAE3cqs99HtiPSSc8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "losung360-connector-gae@losung360-crm.iam.gserviceaccount.com",
+  "client_id": "105101121669499158440",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/losung360-connector-gae%40losung360-crm.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
