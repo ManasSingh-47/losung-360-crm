@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.PostConstruct;
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @ComponentScan("com.crm.contacts")
+@PropertySources({ @PropertySource("classpath:application.properties") })
 public class ContactsApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
@@ -28,9 +30,9 @@ public class ContactsApplication extends SpringBootServletInitializer {
 		return builder.sources(ContactsApplication.class);
 	}
 
-	@PostConstruct
-	private void init() {
-		HibernateUtil.initSessionFactory();
-	}
+//	@PostConstruct
+//	private void init() {
+//		HibernateUtil.initSessionFactory();
+//	}
 
 }

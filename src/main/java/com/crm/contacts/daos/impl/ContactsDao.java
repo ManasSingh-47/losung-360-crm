@@ -3,18 +3,22 @@ package com.crm.contacts.daos.impl;
 import com.crm.contacts.daos.IContactsDao;
 import com.crm.contacts.models.Contacts;
 import com.crm.contacts.util.HibernateUtil;
+import org.checkerframework.checker.units.qual.C;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.transform.Transformers;
 import org.hibernate.type.StandardBasicTypes;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.naming.directory.InvalidAttributesException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 @Repository
-public class ContactsDao implements IContactsDao {
+public class ContactsDao extends AbstractMasterDaoImpl implements IContactsDao {
 
     private static final Logger LOG = Logger.getLogger(ContactsDao.class.getName());
 
@@ -33,33 +37,12 @@ public class ContactsDao implements IContactsDao {
         if (firstName == null && lastName == null && email == null)
             throw new InvalidAttributesException("firstName, lastName and email cannot be null");
 
-        Session session = HibernateUtil.getHibernateSession();
-        SQLQuery sqlQuery = session.createSQLQuery(getContactsByIdentifiersQuery(firstName, lastName, email))
-                .addScalar("id", StandardBasicTypes.LONG)
-                .addScalar("firstName", StandardBasicTypes.STRING)
-                .addScalar("lastName", StandardBasicTypes.STRING)
-                .addScalar("email", StandardBasicTypes.STRING)
-                .addScalar("phone", StandardBasicTypes.STRING);
-        if (firstName != null) {
-            sqlQuery.setParameter("firstName", firstName);
-        }
+        Map<String, Object> attributeMap = new HashMap<String, Object>();
+        attributeMap.put("firstName", firstName);
+        attributeMap.put("lastName", lastName);
+        attributeMap.put("email", email);
 
-        if (lastName != null) {
-            sqlQuery.setParameter("lastName", lastName);
-        }
-
-        if (email != null) {
-            sqlQuery.setParameter("email", email);
-        }
-        try {
-            return (List<Contacts>) sqlQuery.setResultTransformer(Transformers.aliasToBean(Contacts.class)).list();
-        } catch (Exception ex) {
-            LOG.severe("Unable to fetch records from the database");
-            ex.printStackTrace();
-            throw ex;
-        } finally {
-            HibernateUtil.closeSession(session);
-        }
+        return fetchAllWithCriteria(Contacts.class, attributeMap);
     }
 
     /**
@@ -83,24 +66,7 @@ public class ContactsDao implements IContactsDao {
             throw new InvalidAttributesException("phone cannot be null");
 
         Contacts contact = new Contacts(firstName, lastName, email, phone);
-        Session session = HibernateUtil.getHibernateSession();
-        try {
-            HibernateUtil.beginTransaction(session);
-            session.createSQLQuery("INSERT into contacts (firstName, lastName, email, phone) VALUES (:firstName, :lastName, :email, :phone)")
-                    .setParameter("firstName", firstName)
-                    .setParameter("lastName", lastName)
-                    .setParameter("email", email)
-                    .setParameter("phone", phone).executeUpdate();
-            HibernateUtil.commitTransaction(session);
-        } catch (Exception ex) {
-            LOG.severe("Unable to save the record in the database");
-            HibernateUtil.rollBackTransaction(session);
-            throw ex;
-        } finally {
-            HibernateUtil.closeSession(session);
-        }
-
-        return contact;
+        return (Contacts) add(contact);
     }
 
     /**
@@ -120,23 +86,7 @@ public class ContactsDao implements IContactsDao {
             throw new Exception("Id cannot be null");
 
         Contacts contact = new Contacts(id, firstName, lastName, email, phone);
-        Session session = HibernateUtil.getHibernateSession();
-        try {
-            HibernateUtil.beginTransaction(session);
-            int x = session.createSQLQuery(getUpdateQueryById(firstName, lastName, email, phone))
-                    .setParameter("id", id).executeUpdate();
-            HibernateUtil.commitTransaction(session);
-            if (x == 0)
-                throw new Exception("No records updated, please enter valid id");
-        } catch (Exception ex) {
-            LOG.severe("Unable to update the record in the database");
-            HibernateUtil.rollBackTransaction(session);
-            throw ex;
-        } finally {
-            HibernateUtil.closeSession(session);
-        }
-
-        return contact;
+        return (Contacts) update(contact);
     }
 
     private String getUpdateQueryById(String firstName, String lastName, String email, String phone) {
